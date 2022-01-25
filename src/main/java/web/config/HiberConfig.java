@@ -39,7 +39,6 @@ public class HiberConfig {
 
     @Bean
     public LocalContainerEntityManagerFactoryBean getEntityManagerFactory() {
-        System.out.println("метод entityManagerFabric");
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource());
         em.setPackagesToScan(env.getRequiredProperty("db.entity"));
@@ -62,15 +61,11 @@ public class HiberConfig {
 
     @Bean
     public PlatformTransactionManager getTransactionManager() {
-        System.out.println("метод transaction manager");
+
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(getEntityManagerFactory().getObject());
         return transactionManager;
     }
 
-//    @Bean
-//    public PersistenceExceptionTranslationPostProcessor exceptionTranslation(){
-//        return new PersistenceExceptionTranslationPostProcessor();
-//    }
 
 }

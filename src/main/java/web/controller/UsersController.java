@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import web.model.User;
 import web.service.UserService;
 
+import javax.servlet.ServletContext;
+
 @Controller
 @RequestMapping("/users")
 public class UsersController {

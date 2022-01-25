@@ -1,6 +1,7 @@
 package web.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import web.model.User;
 import web.service.UserService;
