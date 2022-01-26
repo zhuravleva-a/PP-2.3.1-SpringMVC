@@ -1,8 +1,9 @@
 package web.model;
 
-import org.springframework.stereotype.Component;
-
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "users")
@@ -13,15 +14,19 @@ public class User {
     private long id;
 
     @Column(name = "name")
+    @NotEmpty(message = "Обязательное поле")
     private String name;
 
     @Column(name = "lastName")
     private String lastName;
 
     @Column(name = "age")
+    @Min(value = 1, message = "Некорректное значение")
     private int age;
 
     @Column(name = "email")
+    @Email(message = "Некорректное значение")
+    @NotEmpty
     private String email;
 
     public User() {

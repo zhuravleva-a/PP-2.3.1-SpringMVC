@@ -67,5 +67,11 @@ public class HiberConfig {
         return transactionManager;
     }
 
+    @Bean
+    public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
+        return new PersistenceExceptionTranslationPostProcessor();
+    }
+
+
 
 }
