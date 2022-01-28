@@ -16,7 +16,7 @@ public class UserDaoHibernateImpl implements UserDao {
     @Override
     @SuppressWarnings("unchecked")
     public List<User> getAllUsers() {
-        return em.createQuery("select user from User user").getResultList();
+        return em.createQuery("from User").getResultList();
     }
 
     @Override
@@ -31,13 +31,13 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void update(long id, User updatedUser) {
-        em.find(User.class, id);
         em.merge(updatedUser);
     }
 
     @Override
     public void delete(long id) {
-        User user = em.find(User.class, id);
-        em.remove(user);
+        em.createQuery("delete from User user where user.id = ?1")
+                .setParameter(1, id)
+                .executeUpdate();
     }
 }
